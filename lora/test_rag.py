@@ -1,7 +1,7 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.docstore.document import Document
 
@@ -13,7 +13,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
 
 # Setup RAG
-with open("disaster_docs.txt", "r") as f:
+with open("/Users/ishan/Downloads/deepseek-playground-master/deepseek-playground-master/lora/disaster_docs.txt", "r") as f:
     raw_text = f.read()
 splitter = CharacterTextSplitter(chunk_size=200, chunk_overlap=20)
 docs = [Document(page_content=chunk) for chunk in splitter.split_text(raw_text)]
