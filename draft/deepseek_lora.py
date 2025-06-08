@@ -24,7 +24,7 @@ lora_config = LoraConfig(
 model = get_peft_model(model, lora_config)
 
 # Load dataset
-dataset = load_dataset("json", data_files="disaster_data.jsonl")
+dataset = load_dataset("json", data_files="/Users/ishan/Downloads/deepseek-playground-master/deepseek-playground-master/lora/disaster_data.jsonl")
 print(f"Dataset size: {len(dataset['train'])} examples")
 
 # Tokenize with consistent max_length
