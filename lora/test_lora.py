@@ -23,10 +23,11 @@ Analysis:"""
 inputs = tokenizer(prompt, return_tensors="pt").to(device)
 outputs = model.generate(
     **inputs,
-    max_new_tokens=600,
+    max_new_tokens=1500,
     temperature=0.5,
     top_p=0.95,
-    do_sample=True
+    do_sample=True,
+    repetition_penalty=1.15
 )
 response = tokenizer.decode(outputs[0], skip_special_tokens=True)
 print(f"Response: {response.split('Analysis:')[-1].strip() if 'Analysis:' in response else response}")
