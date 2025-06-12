@@ -26,7 +26,7 @@ retrieved_docs = vector_store.similarity_search(data_feed, k=1)
 context = retrieved_docs[0].page_content if retrieved_docs else "No context available."
 prompt = f"Analyze seismic data: {data_feed}\nContext: {context}"
 inputs = tokenizer(prompt, return_tensors="pt").to(device)
-outputs = model.generate(**inputs, max_new_tokens=50)  # Updated to max_new_tokens
+outputs = model.generate(**inputs, max_new_tokens=1500, repetition_penalty=1.15)  # Updated to max_new_tokens
 print(f"Data Feed: {data_feed}")
 print(f"Context: {context}")
 print(f"Response: {tokenizer.decode(outputs[0], skip_special_tokens=True)}")
